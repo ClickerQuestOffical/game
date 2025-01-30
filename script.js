@@ -87,16 +87,25 @@ function showBunny() {
             setTimeout(() => {
                 bunny.style.display = 'none';
                 speechBubble.style.display = 'none';
-                makeGameHarder(); // Make the game harder after the bunny disappears
+                activateReverseMode();
             }, 3000);
         }
     }, 20);
 }
 
-function makeGameHarder() {
-    // Make the game harder by reducing the points per click
-    clickButton.removeEventListener('click', handleClick);
-    clickButton.addEventListener('click', handleHarderClick);
+function activateReverseMode() {
+    document.body.classList.add('reverse-mode');
+    makeButtonMoveRandomly(); // Make the button move randomly
+}
+
+function makeButtonMoveRandomly() {
+    setInterval(() => {
+        const x = Math.random() * (window.innerWidth - clickButton.offsetWidth);
+        const y = Math.random() * (window.innerHeight - clickButton.offsetHeight);
+        clickButton.style.position = 'absolute';
+        clickButton.style.left = `${x}px`;
+        clickButton.style.top = `${y}px`;
+    }, 1000); // Move the button every second
 }
 
 function handleClick(e) {
@@ -108,13 +117,6 @@ function handleClick(e) {
     if (counter >= 500 && questBox.style.opacity !== '1' && !questCompleted) {
         startQuest();
     }
-}
-
-function handleHarderClick(e) {
-    const points = getRandomNumber(1, 3); // Reduced points to make the game harder
-    counter += doublePointsTime > 0 ? points * 2 : points;
-    counterElement.textContent = counter;
-    createClickAnimation(e.clientX, e.clientY, points);
 }
 
 function createClickAnimation(x, y, value) {
