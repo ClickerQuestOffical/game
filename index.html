@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clicker Game</h1>
+        <p>Counter: <span id="counter">0</span></p>
+        <button id="clickButton">Click Me!</button>
+    </div>
+
+    <!-- Quest Board -->
+    <div id="questBox" class="quest-box">
+        <h2 id="questTitle">Double Points</h2>
+        <p id="questSubtitle">Click as fast as you can for 1 minute!</p>
+        <button id="startQuestButton">Start Quest</button>
+        <button id="questClickButton" style="display: none;">Click Me Fast!</button>
+        <p>Quest Clicks: <span id="questCounter">0</span></p>
+        <p>Time Left: <span id="questTimer">60</span>s</p>
+    </div>
+
+    <!-- Double Points Timer -->
+    <div id="timer" class="timer">Double Points: <span id="timerValue">0</span>s</div>
+
+    <!-- Click Animation Container -->
+    <div id="clickAnimationContainer"></div>
+
+    <!-- Bunny and Speech Bubble -->
+    <img id="bunny" src="https://png.pngtree.com/png-vector/20200417/ourmid/pngtree-cute-rabbit-cartoon-illustration-png-image_2184689.jpg" alt="Bunny" style="display: none; position: absolute; left: -200px; height: 100px;">
+    <div id="speechBubble" style="display: none; position: absolute; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        How about I make this harder for you?
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
